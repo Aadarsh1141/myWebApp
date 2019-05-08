@@ -1,0 +1,73 @@
+<div class="container">
+    <mat-tab-group>
+        <mat-tab label="RIDE TAKERS">
+            <div class="row" [@routerTransition] align="left">
+                <div class="col-lg-12">
+                    <ul style="list-style: none; font-size:12px;">
+                        <li style="margin:10px;" *ngFor="let passenger of passengerList">
+                            <div class="card">
+                                <div class="card-image" style="width:60px;">
+                                    <img *ngIf="passenger.imageURI!=null" mat-card-avatar src={{passenger?.imageURI}}
+                                        style="height:55px;padding-left: 20px;">
+                                    <img *ngIf="passenger.imageURI==null" mat-card-avatar
+                                        src="assets/images/default_male.png" style="height:55px;">
+                                </div>
+                                <div style="width:100%; height:100%; flex-direction:row;">
+                                    <div class="card-header">
+                                        <div class="card-header-subHeader">
+                                            <div class="card-text-dark"><a matTooltip="click to view profile"
+                                                    (click)="viewProfile(passenger)"
+                                                    style="cursor:pointer; text-decoration: none">{{passenger.name}}</a>
+                                            </div><br>
+                                            <div class="card-text-light" style="margin-top:5px;"><img
+                                                    src="assets/images/verified_new.png"
+                                                    style="height:20px; margin-right:5px;">Quick Ride</div>
+                                        </div>
+                                        <br>
+                                        <a (click)="openChat(null)">
+                                            <i class="fa fa-comments" style="width:30px;"></i>
+                                        </a>
+                                        <a href="tel:{{passenger.contactNo}}">
+                                            <i class="fa fa-phone" style="width:30px;"></i>{{passenger.contactNo}}
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a (click)="invitePassenger()" class="btn rounded-btn"
+                                            style="width:80px; height:30px; margin-right:-10px; "><span
+                                                class="rounded-btn-text">Invite</span></a>
+                                    </div>
+                                    <div>
+                                        <div style="width:100%; display:flex;flex-direction:row;">
+                                            <img src="assets/images/default_male.png"
+                                                style="display:flex; height:40px; width:2px;">
+                                            <div style="margin-left:5px">
+                                                <p class="trip-Text">{{passenger.fromLocationAddress}}
+                                                    <br>
+                                                    <i class="fa fa-arrow-down"></i>
+                                                    <br />
+                                                    {{passenger.toLocationAddress}} </p>
+                                            </div>
+                                        </div>
+                                        <div style="width:100%; display:flex;flex-direction:row;" align="left">
+                                            <table class="table table-striped">
+                                                <tr>
+                                                    <td>Route: {{passenger.matchPercentage}} %</td>
+                                                    <td>Time: {{passenger.pickupTime | date:'shortTime' }}</td>
+                                                    <td>Rating: {{passenger.rating}} <i class="fa fa-star"
+                                                            style="color:#FFD700"></i></td>
+                                                    <td style="color:#16b1e0">Points: {{passenger.points}}</td>
+                                                    <td>{{passenger.requiredSeats}}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="FAVOURITES"><br> FAVOIRITES </mat-tab>
+        <mat-tab label="GROUPS"><br> GROUPS </mat-tab>
+        <mat-tab label="CONTACTS"><br>CONTACTS </mat-tab>
+    </mat-tab-group>
+</div>

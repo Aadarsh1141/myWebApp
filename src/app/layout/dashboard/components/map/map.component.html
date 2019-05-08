@@ -1,0 +1,49 @@
+<div *ngIf="showRideDetails">
+    <mat-card style="height:40px;">
+        <mat-grid-list cols="2" style="margin-top:-10px;width:100%;" rowHeight="30px">
+            <mat-grid-tile style="font-size:10px;">
+                <p style="position:absolute;left:0px;font-weight: 700">{{showCurrentRide?.startTime | date:'medium'}}
+                </p>
+            </mat-grid-tile>
+            <mat-grid-tile style="float:right;right:0;">
+                <button mat-icon-button style="position:absolute;right:0px;" [matMenuTriggerFor]="appMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #appMenu="matMenu" style="z-index:999999;">
+                    <button mat-menu-item (click)="reschedule()">Reschedule</button>
+                    <button mat-menu-item (click)="cancel()">Cancel</button>
+                </mat-menu>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card>
+</div>
+<div *ngIf="showRideDetails" style="position: relative;width: 100%;font-size:8px;background: #1e88e5;z-index: 10;"
+    class="container">
+    <p style="color:#fff; font-size:12px; width: 80%; display: inline-block" class="text-justify">
+        {{showCurrentRide?.startAddress}}
+        <br />
+        <i class="fa fa-arrow-down"></i>
+        <br /> {{showCurrentRide?.endAddress}}
+    </p>
+    <p style="color:#fff;font-size:12px; display: inline-block; width:10%;">
+        <span *ngIf="showCurrentRide.vehicleNumber" style="position:absolute;top:10px;margin-left:25px"> <i
+                class="fa fa-car" aria-hidden="true" style="height:30px;width:30px;"></i></span>
+        <span style="position:absolute; top:30px;margin-left:20px">{{showCurrentRide?.vehicleNumber}}</span>
+    </p>
+</div>
+<div style="position: relative; z-index:1">
+    <ngui-map [options]="allOptions" style="height:200px;" (mapReady$)="onMapReady($event)">
+        <marker [icon]="{url: rideMarkerUrl()}">
+        </marker>
+        <directions-renderer [markerOptions]="{icon: markerIconUrl()}" [draggable]="false"
+            (directions_changed)="directionsChanged()" [directions-request]="direction">
+        </directions-renderer>
+    </ngui-map>
+</div>
+
+<div class="freezRide" *ngIf="showFreezeRide">
+    <i class="fa fa-lock" *ngIf="showLockButton" matTooltip="Freeze Ride" (click)="freezeRide()"
+        style="opacity: 0.9; font-size: 30px;"></i>
+    <i class="fa fa-unlock-alt" *ngIf="showUnlockButton" matTooltip="Unfreeze Ride" (click)="unFreezeRide()"
+        style="opacity: 0.9; font-size: 30px;"></i>
+</div>

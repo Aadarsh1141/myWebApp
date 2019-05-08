@@ -1,0 +1,17 @@
+.container{
+    width:100%
+}
+
+
+div {
+    display: table;
+    height:50px;
+    width:100%;
+    border-bottom:0.5px solid #000;
+    padding-left:10px;
+}
+
+span {
+    display: table-cell;
+    vertical-align: middle;
+}

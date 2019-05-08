@@ -1,0 +1,14 @@
+<div>
+  <h5 style="color:green; font-weight:700">Apply promo/referral code</h5>
+  <input class="form-control coupon" id="referralCode" [(ngModel)]="referralCode" placeholder="Referral Code">
+</div>
+<br>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-5">
+    <button class="btn btn-success form-control" (click)="apply()">APPLY</button>
+  </div>
+  <div class="col-md-5">
+    <button class="btn btn-default form-control" (click)="cancel()">Cancel</button>
+  </div>
+</div>

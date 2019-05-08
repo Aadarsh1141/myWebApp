@@ -1,0 +1,44 @@
+<div [@routerTransition] align="center" *ngIf="riderList?.length==0">No rider is available, Please wait
+  for some time.</div>
+
+<div class="card" [@routerTransition]>
+  <ul class="ride-list">
+    <li>
+      <div class="rider-wrap" style="cursor:pointer;">
+        <a (click)="seeRiderList()" matTooltip="click to find rider">
+          <span>
+            <img src="assets/images/invite.png" alt="">
+          </span>
+          <strong style="font-size:12px;">Find rider({{noOfInvitees}})</strong>
+        </a>
+      </div>
+      <div class="rider-wrap">
+        <a href="#">
+          <span>
+            <img src="assets/images/default_male.png" alt="">
+          </span>
+          <strong style="font-size:12px;">{{name}}</strong>
+        </a>
+      </div>
+      <div class="pass-wrap">
+        <a *ngFor="let rider of riders">
+          <span>
+            <img src="assets/images/default_male.png" alt="">
+          </span>
+          <strong style="font-size:12px;">{{rider.name}}</strong>
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <button *ngIf="!checkInButtons" class="btn form-control cancelButton" (click)="cancel()">Cancel</button>
+  <div *ngIf="checkInButtons">
+    <div class="btnCheckin">
+      <button class="btn btn-success checkInButton form-control" *ngIf="showCheckInButton" (click)="checkIn()">Check In</button>
+      <button *ngIf="!checkInButtons" class="btn form-control cancelButton1" (click)="cancel()">Cancel</button>
+    </div>
+    <button class="btn btn-danger form-control" *ngIf="!showCheckInButton" (click)="checkOut()">Check Out</button>
+  </div>
+</div>

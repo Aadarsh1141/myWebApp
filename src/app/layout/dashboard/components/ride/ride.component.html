@@ -1,0 +1,130 @@
+<mat-card>
+    <mat-grid-list cols="2" rowHeight="50px">
+        <mat-grid-tile>
+            <button class="btn form-control" style="height:35px; border-radius:20px;" [style.color]="color1"
+                [style.background-color]="bgColor1" (click)="findRide()"><i class="fa fa-car" aria-hidden="true"
+                    style="height:30px;width:30px;"></i>Find
+                Ride</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button class="btn form-control" style="height:35px; border-radius:20px;" [style.color]="color"
+                [style.background-color]="bgColor" (click)="offerRide()"><i class="fa fa-users" aria-hidden="true"
+                    style="height:30px;width:30px;"></i>Offer
+                Ride</button>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <div class="offerRides" *ngIf="offerRides">
+        <hr>
+        <table>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input places-auto-complete (place_changed)="autocompletePickup($event)"
+                                    class="form-control input-lg input-underline" [types]="['geocode']"
+                                    [(ngModel)]="startAddress" id="pickupAddress" #pickupAddress
+                                    placeholder="Enter Pickup Location">
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+                <td>
+                    <i class="fa fa-arrow-right" style="font-size:10px"></i>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input places-auto-complete (place_changed)="autocompleteDestination($event)"
+                            [types]="['geocode']" [(ngModel)]="endAddress" class="form-control input-lg input-underline"
+                            placeholder="Enter Drop Location">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <input [owlDateTime]="dt" [min]="todayDate" placeholder="Select offer ride time"
+                            [owlDateTimeTrigger]="dt" [(ngModel)]="currentTime" id="startTime" #startTime
+                            class="form-control input-lg input-underline">
+                        <owl-date-time #dt [pickerMode]="'dialog'" [stepMinute]=5 (afterPickerClosed)="getStartTime()">
+                        </owl-date-time>
+                    </div>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <p style="font-size:14px;width:100%; cursor: pointer;" matTooltip="Click to know vehicles details"
+                        (click)="showAllVehicles()">{{defaultVehicle.model}}:
+                        <b>{{defaultVehicle.regno}} </b>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <div class="form-group" *ngIf="!ridePosted">
+            <input type="button" class="btn btn-success form-control" value="Offer Ride" (click)="postRide()">
+        </div>
+        <div class="form-group" *ngIf="ridePosted">
+            <input type="button" class="btn btn-success form-control" value="Edit Ride" (click)="editRide()">
+        </div>
+    </div>
+
+    <div class="offerRides" *ngIf="takeRide">
+        <hr>
+        <table>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input places-auto-complete (place_changed)="autocompletePickup($event)"
+                                    class="form-control input-lg input-underline" [types]="['geocode']"
+                                    [(ngModel)]="takeRidePickupAddress" id="pickupAddress" #pickupAddress
+                                    placeholder="Enter Pickup Location">
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+                <td>
+                    <i class="fa fa-arrow-right" style="font-size:10px"></i>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input places-auto-complete (place_changed)="autocompleteDestination($event)"
+                            [types]="['geocode']" [(ngModel)]="takeRideDropAddress"
+                            class="form-control input-lg input-underline" placeholder="Enter Drop Location">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <input [owlDateTime]="dt" [min]="todayDate" placeholder="Select Pickup Time"
+                            [owlDateTimeTrigger]="dt" [(ngModel)]="currentTime" id="startTime" #startTime
+                            class="form-control input-lg input-underline">
+                        <owl-date-time #dt [pickerMode]="'dialog'" [stepMinute]=5 (afterPickerClosed)="getStartTime()">
+                        </owl-date-time>
+                    </div>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <select style="margin-top:-35px" [(ngModel)]="numberOfSeats"
+                        class="form-control input-lg input-underline">
+                        <option value='null' disabled selected>Select seat</option>
+                        <option *ngFor="let numberOfSeats of seatOption" [value]="numberOfSeats">{{numberOfSeats}}
+                        </option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <div class="form-group">
+            <input type="button" *ngIf="!showEditButton" class="btn btn-success form-control" value="Take Ride"
+                (click)="takeRideButtonClicked()">
+            <input type="button" *ngIf="showEditButton" class="btn btn-success form-control" value="Edit Ride"
+                (click)="EditRideButtonClicked()">
+        </div>
+    </div>
+</mat-card>

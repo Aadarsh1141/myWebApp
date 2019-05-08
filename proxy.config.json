@@ -1,0 +1,206 @@
+{
+	"/user": {
+		"target": {
+			"host": "testrm.getquickride.com",
+			"protocol": "https",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/user": "https://testrm.getquickride.com:8080/dishaapiserver/rest/qpa/user"
+		}
+	},
+	"/login": {
+		"target": {
+			"host": "testrm.getquickride.com",
+			"protocol": "https",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/login": "http://testrm.getquickride.com:8080/dishaapiserver/rest/qpa/user"
+		}
+	},
+	"/activateuser": {
+		"target": {
+			"host": "testrm.getquickride.com",
+			"protocol": "https",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/activateuser": "https://testrm.getquickride.com:8080/dishaapiserver/rest/qpa/user/activateuser"
+		}
+	},
+	"/resend": {
+		"target": {
+			"host": "testrm.getquickride.com",
+			"protocol": "https",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/resend": "https://testrm.getquickride.com:8080/dishaapiserver/rest/qpa/user/resend/activationcode"
+		}
+	},
+	"/referralcode": {
+		"target": {
+			"host": "testrm.getquickride.com",
+			"protocol": "https",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/referralcode": "https://testrm.getquickride.com:8080/dishaapiserver/rest/qpa/user/checkreferralcode"
+		}
+	},
+	"/routerepository": {
+		"target": {
+			"host": "18.232.45.129",
+			"protocol": "http",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/routerepository": "http://18.232.45.129:8080/routerepositoryserver/rest/qpa/routepath"
+		}
+	},
+	"/vehical": {
+		"target": {
+			"host": "testrm.getquickride.com",
+			"protocol": "https",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/vehical": "http://testrm.getquickride.com:8080/dishaapiserver/rest/qpa/vehicle"
+		}
+	},
+	"/routematchserver1": {
+		"target": {
+			"host": "18.204.189.100",
+			"protocol": "http",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/routematchserver1": "http://18.204.189.100:8080/routematchserver/rest/qpa/routematcher/matchingriderrides/impt"
+		}
+	},
+	"/ridemgmt1": {
+		"target": {
+			"host": "testrm.getquickride.com",
+			"protocol": "https",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/ridemgmt1": "http://18.233.26.138:8080/dishaapiserver/rest/qpa/"
+		}
+	},
+	"/routematchserver": {
+		"target": {
+			"host": "18.204.189.100",
+			"protocol": "http",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/routematchserver": "http://18.204.189.100:8080/routematchserver/rest/qpa/matchingriderrides/impt"
+		}
+	},
+	"/passangerRoutematchserver": {
+		"target": {
+			"host": "18.204.189.100",
+			"protocol": "http",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/passangerRoutematchserver": "http://18.204.189.100:8080/routematchserver/rest/qpa/routematcher/matchingpassengerrides/all"
+		}
+	},
+	"/rideConnectvity": {
+		"target": {
+			"host": "18.204.189.100",
+			"protocol": "http",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/rideConnectvity": "http://18.204.189.100:8080/rideconnectivityserver/rest/qpa/rideconn"
+		}
+	},
+	"/ridemgmt": {
+		"target": {
+			"host": "testrm.getquickride.com",
+			"protocol": "https",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/ridemgmt": "https://testrm.getquickride.com:8080/dishaapiserver/rest/qpa"
+		}
+	},
+	"/userMgmt": {
+		"target": {
+			"host": "testrm.getquickride.com",
+			"protocol": "https",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/userMgmt": "https://testrm.getquickride.com:8080/dishaapiserver/rest/qpa"
+		}
+	},
+	"/billing": {
+		"target": {
+			"host": "testrm.getquickride.com",
+			"protocol": "https",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/billing": "http://testrm.getquickride.com:8080/dishaapiserver/rest"
+		}
+	},
+	"/favouritepartner": {
+		"target": {
+			"host": "testrm.getquickride.com",
+			"protocol": "https",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/favouritepartner": "http://testrm.getquickride.com:8080/dishaapiserver/rest/qpa/favouritepartner"
+		}
+	},
+	"/commonAPI": {
+		"target": {
+			"host": "testrm.getquickride.com",
+			"protocol": "https",
+			"port": "8080"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"pathRewrite": {
+			"/commonAPI": "http://testrm.getquickride.com:8080/dishaapiserver/rest/qpa"
+		}
+	}
+}

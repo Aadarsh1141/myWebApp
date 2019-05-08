@@ -1,0 +1,19 @@
+$topnav-background-color: #fff;
+.rounded-btn {
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    color:#000000;
+    background: $topnav-background-color;
+    border: 2px solid #36C657;
+    font-size: 16px;
+    line-height: 40px;
+    padding: 0 15px;
+}
+.rounded-btn:hover,
+.rounded-btn:focus,
+.rounded-btn:active,
+.rounded-btn:visited {
+    color:#000000;
+    border: 2px solid #000000;
+    outline: none;
+}

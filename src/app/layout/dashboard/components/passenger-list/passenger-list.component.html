@@ -1,0 +1,37 @@
+<div class="card" [@routerTransition]>
+    <ul class="ride-list">
+        <li>
+            <div class="rider-wrap">
+                <a>
+                    <span>
+                        <img src="assets/images/default_male.png" alt="">
+                    </span>
+                    <strong style="text-align:left; font-size:10px;">{{riderProfile?.name}}</strong>
+                </a>
+            </div>
+            <div class="pass-wrap" *ngIf="passengers.length===0">
+                <p style="font-size: 12px;color: grey;display: block">
+                    Shared options not available at this point of time . We will notify you as soon as we find a match .
+                </p>
+            </div>
+            <div class="pass-wrap" *ngIf="passengers.length!==0">
+                <a *ngFor="let passenger of passengers">
+                    <span matTooltip="Click to unjoin or view profile" (click)="openUserDialog(passenger)">
+                        <img src="assets/images/default_male.png" alt="">
+                    </span>
+                    <strong style="font-size:10px;">{{passenger.name}}</strong>
+                </a>
+            </div>
+
+            <div class="invite-wrap">
+                <a (click)="seeInviteList()" matTooltip="click to invite people">
+                    <span>
+                        <img src="assets/images/invite.png" alt="">
+                    </span>
+                    <strong>Invite({{noOfInvitees}})</strong>
+                </a>
+            </div>
+        </li>
+    </ul>
+
+</div>

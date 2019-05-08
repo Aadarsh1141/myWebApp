@@ -1,0 +1,61 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img src="assets/images/app_logo.png" width="100px" />
+            <h1>Quick Ride Sign Up</h1>
+            <form role="form" [formGroup]="signupForm">
+                <div class="form-content">
+                    <div class="form-group" matTooltip="Enter Phone Number">
+                        <input type="text" class="form-control input-underline input-lg" id="phone"
+                            formControlName="phone" autocomplete="off" name="username" required>
+                        <span class="floating-label">Phone</span>
+                    </div>
+                    <div class="form-group" matTooltip="Enter Password">
+                        <input type="password" class="form-control input-underline input-lg" id="password"
+                            formControlName="password" autocomplete="off" required>
+                        <span class="floating-label">Password</span>
+                    </div>
+                    <div class="form-group" matTooltip="Enter Name">
+                        <input type="text" class="form-control input-underline input-lg" id="name"
+                            formControlName="name" required>
+                        <span class="floating-label">Name</span>
+                    </div>
+
+                    <div class="form-group" matTooltip="Enter Email">
+                        <input type="text" class="form-control input-underline input-lg" id="email"
+                            formControlName="email" autocomplete="off" required>
+                        <span class="floating-label">Email</span>
+                    </div>
+                    <div class="form-group radioButtonGroup" matTooltip="Please Select Gender">
+                        <label class="md-check radioButton" style="padding:10px;">
+                            <input type="radio" value="M" name="gender" formControlName="gender">
+                            <strong>Male</strong>
+                        </label>
+
+                        <label class="md-check radioButton" style="padding:10px;">
+                            <input type="radio" value="F" name="gender" formControlName="gender">
+                            <strong>Female</strong>
+                        </label>
+
+                        <label class="md-check radioButton" style="padding:10px;">
+                            <input type="radio" value="N" name="gender" formControlName="gender">
+                            <strong>Not to say</strong>
+                        </label>
+                    </div>
+                    <div>
+                        <a style="cursor:pointer; text-decoration:none" *ngIf="showPromoCode" (click)="referralCode();">Have a promo/referral
+                            code?</a>
+                        <p style="font-size:16px; color:green;" *ngIf="!showPromoCode">Promo code successfully applied.</p>
+                    </div>
+                    <br>
+
+                    <a class="btn rounded-btn" (click)="onSubmit()"> Sign Up </a>&nbsp;
+                    <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
+                    <p style="margin-top:20px">By signing up, I agree to Quick Ride <u><a
+                                style="cursor:pointer; text-decoration:none;">Terms</a></u>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

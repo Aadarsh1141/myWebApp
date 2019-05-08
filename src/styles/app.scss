@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/bootstrap";
+@import "spinner";
+@import "utils";
+@import "rtl";
+@import "responsive";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~angular-star-rating/assets/scss/star-rating";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+//Used to increase the width of google places autocomplete div. It was not working inside the local scss file , so had to put it here.
+.pac-container {
+    width:400px !important;
+
+}
+
+.mat-step-header .mat-step-icon{background-color:#3ab744;color:#fff}
+
+
+  /* ink bar style */
+  .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+    background:#7cb342;
+    height: 3px;
+  } 
+  
+  .mat-tab-label {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: transparent;
+    color: #000;
+    font-weight: 700;
+}

@@ -1,0 +1,56 @@
+<div [@routerTransition]>
+    <div class="container">
+        <div class="dashboard-container" *ngIf="!tripCompleted">
+
+            <app-map [ridePosted]="ridePosted" [rideStart]="rideStart" (pickupCoords)="getPickupCoords($event)"
+                (destinationCoords)="getDestinationCoords($event)" (pickupAddress)="getPickupAddress($event)"
+              (freezeRideCalled)="freezeRide($event)" (unfreezeRideCalled)="unFreezeRide($event)"
+              (passengerCancelCalled)="cancelPassangerRide($event)" (riderCancelCalled)="cancelRide($event)"
+              (riderScheduleCalled)="editRide($event)" (passengerScheduleCalled)="getcallPassangerEditRide($event)"
+              [pickup]="latlng" [dest]="destLatLong">
+            </app-map>
+
+            <app-ride [defaultVehicle]="defaultVehicle" [coordinates]="coordinates" *ngIf="showRide"
+                (pickupAddress)="getPickupAddress($event)" (destinationAddress)="getDestinationAddress($event)"
+                (pickupCoords)="getPickupCoords($event)" (destinationCoords)="getDestinationCoords($event)"
+                (rideTime)="getRideTime($event)" (rideNumberOfSeats)="getNumberOfSeats($event)"
+                (callPostRide)="postRide()" (callTakeRide)="takeRide()" (callEditRide)="updateRide()"
+                [reschedulePassanger]="reschedulePassanger" (callPassangerEditRide)="getcallPassangerEditRide($event)">
+            </app-ride>
+            <div *ngIf="showRideInfo">
+                <app-passenger-list [currentRideObject]="currentRideObject" #passenger>
+                </app-passenger-list>
+                <div class="startButtonclass">
+                    <div class="stButton"><button class="btn btn-success sButton1 form-control" (click)="startRide()"
+                            *ngIf="!rideStart">Start
+                            Ride</button></div>
+                    <div class="cButton">
+                        <button class="btn cButton1 form-control" *ngIf="!rideStart" (click)="cancelRide()">Cancel
+                            Ride</button>
+                    </div>
+                </div>
+                <button class="btn btn-danger form-control" (click)="stopRide()" *ngIf="rideStart">End Ride</button>
+            </div>
+            <div class="showRiderList" *ngIf="showRiderList">
+
+                <app-rider-list [riderList]="riderList" (cancelPassengerRide)="cancelPassangerRide($event)"
+                    (passangerCheckout)="getPassengerCheckout($event)">
+                </app-rider-list>
+            </div>
+        </div>
+        <!--Trip Report -->
+        <div class="col-md-6" style="float: none; margin: 0 auto;" *ngIf="tripCompleted && !feedBackForm">
+            <app-trip-report [tripReport]="tripReport" (feedback)="showFeedback($event)"
+                (tripreport)="showNewRide($event);"></app-trip-report>
+
+        </div>
+        <!--End of Trip Report -->
+
+        <!--Feedback form -->
+        <div class="col-md-6" style="float: none; margin: 0 auto;" *ngIf="feedBackForm">
+            <app-feedback [userId]="userId" [riderId]="riderId" [riderName]="riderName" [rideId]="rideId"
+                (feedback)="showNewRide($event);"></app-feedback>
+        </div>
+        <!--End of feedback form -->
+    </div>
+</div>

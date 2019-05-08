@@ -1,0 +1,233 @@
+<div class="login-page">
+  <div class="row justify-content-md-center">
+    <div class="col-md-5">
+      <img src="assets/images/app_logo.png" width="150px" />
+      <h1>Quick Ride Preferences</h1>
+
+      <div class="organizationSetup" *ngIf="showOrganizationSetup">
+        <h1 style="color:green; font-weight:700;" align="left">Hello {{name}} !</h1>
+        <br>
+        <h4 style="color:#000; font-weight:700;" align="left">Where do you work?</h4>
+        <br>
+        <h5 style="font-weight:400;" class="text-justify">Providing workplace information helps us verify you. Verified
+          users get faster and more accurate ride
+          matches</h5>
+        <form role="form" [formGroup]="organizationForm">
+          <div class="form-content">
+            <div class="form-group">
+              <input type="text" formControlName="organizationName" class="form-control input-underline input-lg"
+                id="organizationName" placeholder="Organization Name">
+              <br>
+              <input type="text" formControlName="emailAddress" class="form-control input-underline input-lg"
+                id="emailAddress" placeholder="Office Email Address">
+              <br>
+              <h6 class="text-justify text-warning">
+                <i class="fa fa-warning"></i> We will not spam your inbox. Your email address
+                is used for verificaton purposes to make sure you have a
+                legitimate profile.
+              </h6>
+            </div>
+          </div>
+          <button class="btn rounded-btn" (click)="setupOrganization()"> Continue </button>&nbsp;
+          <a class="btn rounded-btn" (click)="skip()"> Skip </a>
+        </form>
+      </div>
+
+      <div class="prefrenceSetup" *ngIf="!showOrganizationSetup">
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+          <mat-step [stepControl]="firstFormGroup" style="background-color: aquamarine">
+            <form [formGroup]="firstFormGroup" align="left">
+              <div align="left">
+                <h3 style="color:#000; font-weight:700">Your Ride Details</h3>
+                <br>
+                <h5 class="text-jusitfy">This helps us provide the right carpooling matches for you</h5>
+                <br>
+                <h5 style="color:green; font-weight:400;">Select Ride Preferences</h5>
+                <br>
+                <div class="row">
+                  <div class="col-md-6">
+                    <button mat-stroked-button class="form-control" [style.color]="buttonColor1"
+                      [style.background-color]="bgColor1" color="primary" (click)="offerRide()"><span
+                        style="font-weight:700; font-size:20px;"><i class="fa fa-car" aria-hidden="true"></i>
+                        Offer
+                        Rides</span></button>
+                  </div>
+                  <div class="col-md-6">
+                    <button mat-stroked-button class="form-control" [style.color]="buttonColor"
+                      [style.background-color]="bgColor" color="primary" (click)="takeRide()"><span
+                        style="font-weight:700; font-size:20px;"><i class="fa fa-users" aria-hidden="true"></i>
+                        Take
+                        Rides</span></button>
+                  </div>
+                </div>
+                <br>
+                <span>
+                  <h5 class="text-warning"><i class="fa fa-warning"></i> You can change preference anytime</h5>
+                </span>
+                <div>
+                  <table>
+                    <tr>
+                      <td>
+                        <div class="form-group">
+                          <input places-auto-complete formControlName="pickLocation"
+                            class="form-control input-lg input-underline" id="pickupAddress"
+                            placeholder="Enter Pickup Location">
+                        </div>
+                      </td>
+                      <td>
+                        <i class="fa fa-arrow-right" style="font-size:10px"></i>
+                      </td>
+                      <td>
+                        <div class="form-group">
+                          <input places-auto-complete formControlName='dropLocation'
+                            class="form-control input-lg input-underline" placeholder="Enter Drop Location">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type="text" placeholder="Select Start Time" class="form-control input-lg input-underline"
+                          id="start_time" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" formControlName="start_time"
+                          value="" [(ngModel)]="start_time">
+                        <owl-date-time [pickerType]="'timer'" #dt1></owl-date-time>
+                      </td>
+                      <td>
+                        <i class="fa fa-arrow-right" style="font-size:10px"></i>
+                      </td>
+                      <td>
+                        <input type="text" placeholder="Select Drop Time" class="form-control input-lg input-underline"
+                          id="end_time" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" formControlName="end_time"
+                          value="" [(ngModel)]="end_time">
+                        <owl-date-time [pickerType]="'timer'" #dt2></owl-date-time>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <br>
+                <h4 style="color:#000; font-weight: 400"> Select/Edit Route</h4>
+                <div class="row">
+                  <div class="col-md-6">
+                    <a [style.color]="color1" (click)="selectedRoute1()"
+                      style="text-decoration:none; cursor: pointer;">Home
+                      - Office</a>
+                  </div>
+                  <div class="col-md-6">
+                    <a [style.color]="color" style="text-decoration:none; cursor: pointer;"
+                      (click)="selectedRoute()">Office
+                      - Home</a>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="outerBox">
+                  <div class="innerBox">
+                    <button mat-flat-button color="default" style="text-align:left" (click)="back()">Back</button>
+                  </div>
+                  <div class="innerBox">
+                    <button class="btn btn-success" style="width:200px;" (click)="addPref(stepper)">Continue</button>
+                  </div>
+                  <div class="innerBox">
+                    <button mat-flat-button color="default" style="text-align:right" matStepperNext>Skip</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+              <div class="container" *ngIf="showAvatar">
+                <div style="padding-left: 28%">
+                  <div class="outer circle shapeborder" align="center">
+                    <div class="inner circle shapeborder" style="position:relative; margin-left:-70px;">
+                      <label class="innerText">{{firstLetterOfName}}</label></div>
+                  </div>
+                </div>
+                <div class="middle" style="margin-left:38%;">
+                  <label for="files" style="margin-top:-20px;" class="btn outerText btn-block btn-outlined text">Add
+                    Picture</label>
+                  <input id="files" style="visibility:hidden;" (change)="onSelectFile($event)" type="file">
+                </div>
+              </div>
+              <div *ngIf="!showAvatar">
+                <img mat-card-avatar src="data:image/JPEG;base64,{{image}}"
+                  style="width:200px; height:200px; border-radius:50%">
+                <div class="middle" style="margin-left:40%;">
+                  <label for="files" style="color:green; margin-top:55px"
+                    class="btn outerText btn-block btn-outlined text">Change
+                    Picture</label>
+                  <input id="files" style="visibility:hidden;" (change)="onSelectFile($event)" type="file">
+                </div>
+              </div>
+              <br>
+              <div>
+                <h6 class="text-warning text-justify"><i class="fa fa-warning"></i> Profile Picture is mandatory for
+                  profile verification</h6>
+              </div>
+              <br>
+              <div class="outerBox">
+                <div class="innerBox">
+                  <button mat-flat-button color="default" style="text-align:left" matStepperPrevious>Back</button>
+                </div>
+                <div class="innerBox">
+                  <button class="btn btn-success" style="width:200px;" (click)="addImage(stepper)">Continue</button>
+                </div>
+                <div class="innerBox">
+                  <button mat-flat-button color="default" style="text-align:right" matStepperNext>Skip</button>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="thirdFormGroup">
+            <form [formGroup]="thirdFormGroup">
+              <div align="left">
+                <h4 style="font-weight:400;color:#000">Mobile OTP <img *ngIf="showVerified"
+                    src="../../assets/images/verified_new.png"></h4>
+                <br>
+                <h6 *ngIf="showVerified" style="font-weight: 700;">Your account is activated</h6>
+
+                <a style="text-decoration:none; color:gray; cursor: pointer;" *ngIf="!showVerificationDetails"
+                  (click)="verifyNow()">Verify Now</a>
+                <div *ngIf="showVerificationDetails">
+                  <input type="text" formControlName="activationCode" class="form-control input-underline input-lg"
+                    id="activationCode" placeholder="Enter Activation Code">
+                  <br>
+                  <button class="btn rounded-btn" (click)="resendCode()"> Resend Code </button>&nbsp;
+                  <a class="btn rounded-btn" (click)="activate()"> Activate </a>
+                </div>
+
+              </div>
+              <br><br>
+              <div>
+                <h4 class="text-justify" style="font-weight:400; color:#000;">Add your email and get verified status
+                </h4>
+                <br>
+                <h6 class="text-justify" style="font-weight:400;">
+                  People prefer to ride with verified people and they recognise them by green verified badge.
+                  So, get it now!
+                </h6>
+                <br>
+                <div>
+                  <a href="" (click)="addEmail();" style="text-decoration:none; font-size:20px; font-weight:400">Add
+                    Now</a>
+                </div>
+                <br><br>
+                <div align="left">
+                  <h6>
+                    Need help?
+                  </h6>
+                  <h6 style="text-decoration:none;">
+                    <a href="">verificatonsupport@quickride.in</a>
+                  </h6>
+                </div>
+                <br>
+                <div align="center">
+                  <a style="text-decoration:none; color:gray; cursor: pointer;" (click)="login()">Skip</a>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </div>
+    </div>
+  </div>
+</div>

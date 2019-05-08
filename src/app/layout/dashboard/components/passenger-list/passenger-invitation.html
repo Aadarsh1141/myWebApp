@@ -1,0 +1,17 @@
+<div class="card">
+        <div class="card-body">
+                <h5 class="card-title"><strong>Ride Request</strong></h5>
+                <h6 class="card-subtitle mb-2"><strong>{{data.message.title}}</strong></h6>
+                <p class="card-text">{{data.message.description}}</p>
+                <div *ngIf="data.message.type==='RM_RIDER_INVITATION'">
+                       <button class="btn btn-success" (click)="acceptPassenger()">ACCEPT</button>
+                       <button class="btn btn-danger" (click)="closeDialog()">DENY</button>
+
+                </div>
+                <div *ngIf="data.message.type==='RM_PASSENGER_JOIN_RIDE_RIDER'">
+                        <button class="btn btn-success" (click)="closeDialog()">Got It</button>
+                </div>
+
+        </div>
+
+</div>

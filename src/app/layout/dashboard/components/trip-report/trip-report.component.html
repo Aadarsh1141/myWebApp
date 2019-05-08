@@ -1,0 +1,75 @@
+<mat-card class="example-card" *ngIf="bill">
+    <mat-card-header>
+        <div mat-card-avatar style="float: none; margin: 0 auto;">
+            <img src="assets/images/default_male.png" width="50px" />
+
+        </div>
+    </mat-card-header>
+    <br style="clear:both">
+    <div align="center">
+
+        <h5>
+            <strong>{{bill.userName}}</strong>
+        </h5>
+
+    </div>
+    <hr>
+
+
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+        <p>
+            <a (click)="markFav(bill)" style="cursor:pointer; color:#2196f3; font-size:14px; font-weight: 400">Mark
+                Favourite</a>
+        </p>
+        <p>
+            <strong>{{bill.startLocation}}</strong>
+            <br />
+            <i class="fa fa-arrow-down"></i>
+            <br />
+            <strong *ngIf="!showPassengerBill">{{tripReport.tolocation}}</strong>
+            <strong *ngIf="showPassengerBill">{{bill.endLocation}}</strong>
+        </p>
+        <hr>
+        <p *ngIf="!showPassengerBill">
+            <strong>End Time : </strong> &nbsp; {{tripReport.actualEndTime | date:"hh:mm a"}}
+            <br />
+
+            <strong>Date :</strong>&nbsp; {{tripReport.actualEndTime | date :"dd /MM/yy "}}
+
+        </p>
+        <p *ngIf="showPassengerBill">
+            <strong>End Time : </strong> &nbsp; {{bill.endTime | date:"hh:mm a"}}
+            <br />
+            <strong>Date :</strong>&nbsp; {{bill.endTime | date :"dd /MM/yy "}}
+            <br />
+            <strong>Diatance :</strong>&nbsp; {{bill.distance}}
+        </p>
+        <hr>
+        <p *ngIf="!showPassengerBill">
+            <strong>Earned :</strong> {{tripReport.totalEarnings}}
+            <strong>Service Fee :</strong> {{bill.serviceFee}}
+            <strong>GST :</strong> {{tripReport.totalTax}}
+            <strong>Net :</strong> {{tripReport.netEarnings}}
+
+        </p>
+        <p *ngIf="showPassengerBill">
+            <strong>Amount :</strong> {{bill.amount}}
+            <strong>Service Fee :</strong> {{bill.serviceFee}}
+            <strong>GST :</strong> {{bill.tax}}
+            <strong>Net :</strong> {{bill.netAmountPaid}}
+
+        </p>
+        <hr>
+        <p>
+            <strong>Paid To:</strong> {{bill.billByUserName}}
+            <br />
+            <strong>Invoice No :</strong>{{bill.receiptno}}
+            <br /> iDisha Info Labs Private Limited
+            <br /> GSTIN #29AADCI5993E1Z7
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button class="btn btn-success form-control" (click)="tripComplete()">NEXT</button>
+    </mat-card-actions>
+</mat-card>

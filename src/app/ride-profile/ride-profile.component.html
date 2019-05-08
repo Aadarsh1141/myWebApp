@@ -1,0 +1,30 @@
+<div class="login-page" [@routerTransition]>
+  <div class="row justify-content-md-center">
+      <div class="col-md-4">
+        <div class="form-group">  <img src="assets/images/default_male.png" width="100px" /></div>
+        <div class="form-group"><h3 style="color: green">Hello {{name}}</h3></div>
+        <div class="form-group"><h3>Do you Offer Rides or Take Rides ?</h3>
+          <h5>You can change it anytime</h5></div>
+
+
+
+          <div class="form-group" >
+            <a class="btn rounded-btn" (click)="goToDashboard()" >
+                <img src="assets/images/man_green_signup.png" style="height:50px;"><br/>
+              I Take Rides
+
+            </a>
+          <a class="btn rounded-btn" (click)="goToRegisterVehicle()">
+            <img src="assets/images/car_marker_black.png" style="height:30px;"><br/>
+            I Offer Rides
+
+          </a>
+
+          </div>
+          <!-- <div class="form-group">
+            <button class="form-control btn btn-success">CONTINUE</button>
+          </div> -->
+
+      </div>
+  </div>
+</div>

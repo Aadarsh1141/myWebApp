@@ -1,0 +1,23 @@
+<div class="login-page" [@routerTransition]>
+  <div class="row justify-content-md-center">
+    <div class="col-md-4">
+      <img src="assets/images/app_logo.png" width="150px" />
+      <h1>Activate Account</h1>
+      <form role="form" [formGroup]="activateAccountForm">
+        <div class="form-content">
+          <div class="form-group">
+
+            <input type="text" formControlName="activationCode" class="form-control input-underline input-lg"
+              id="activationCode" placeholder="Enter Activation Code">
+
+          </div>
+
+        </div>
+        <button class="btn rounded-btn" (click)="resendCode()"> Resend Code </button>&nbsp;
+        <a class="btn rounded-btn" (click)="activate()"> Activate </a>
+        <!--<a style="cursor: pointer; text-decoration:none;" (click)="skip()">Skip</a>-->
+
+      </form>
+    </div>
+  </div>
+</div>

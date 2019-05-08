@@ -1,0 +1,35 @@
+<div class="" [@routerTransition] *ngIf="showData">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="container" [@routerTransition] *ngIf="!showData" align="center">
+  <div class="row" style="left:50%">
+    <img *ngIf="userProfile?.paramsMapWithAllParams?.imageURI !==null"
+      src="userProfile?.paramsMapWithAllParams?.imageURI">
+    <img src="../../../../../assets/images/default_male.png" style="height:70px; weight:70px;"
+      *ngIf="userProfile?.paramsMapWithAllParams?.imageURI ==null">
+  </div>
+  <div class="row">
+    <p>{{data?.profile?.name}}</p>
+    <br>
+    <p *ngIf="userProfile?.paramsMapWithAllParams?.profession!==null">
+      {{userProfile?.paramsMapWithAllParams?.profession}}
+      At {{userProfile?.paramsMapWithAllParams?.companyname}}</p>
+    <br>
+    <p *ngIf="userProfile?.profileVerificationData?.profileVerified==false">Profile not verified</p>
+    <p *ngIf="userProfile?.profileVerificationData?.profileVerified!=false"><img
+        src="../../../../../assets/images/verified_new.png" style="height:30px;weight:30px;">Verified</p>
+  </div>
+  <div class="row">
+    <p *ngIf="userProfile?.gender === 'M'">Male</p>
+    <p *ngIf="userProfile?.gender !== 'M'">Female</p>
+  </div>
+  <div class="row">
+    {{totalRides}}
+    Total Rides
+  </div>
+  <div class="row">
+    RATING & ONTIME
+    {{userProfile?.paramsMapWithAllParams?.rating}}
+   ({{userProfile?.paramsMapWithAllParams?.noOfReviews}})
+  </div>
+</div>

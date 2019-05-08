@@ -1,0 +1,12 @@
+// shared css for the login and signup page
+@import "../login/login.component.scss";
+
+.radioButton {
+    position: relative;
+    width: 33%;
+    display: inline-block;
+    left: 0;
+}
+.radioButtonGroup {
+    width: 100%;
+}

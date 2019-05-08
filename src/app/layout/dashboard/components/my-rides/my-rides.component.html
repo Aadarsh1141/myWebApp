@@ -1,0 +1,90 @@
+<div [@routerTransition]>
+  <div class="container">
+    <mat-tab-group>
+      <mat-tab label="UPCOMING">
+        <br>
+        <div>
+          <table class="table table-striped">
+            <tbody *ngFor="let passangerList of activePassangerRideList">
+              <tr>
+                <td>
+                  {{passangerList?.startTime | date:'medium'}}
+                </td>
+                <td>
+                  <p style="margin-bottom: 0">{{passangerList?.startAddress}}</p>
+                  <i class="fa fa-arrow-down"></i>
+                  <p>{{passangerList?.endAddress}}</p>
+                </td>
+                <td>
+                  <p style="color:green">{{passangerList?.status}}</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-striped">
+            <tbody *ngFor="let riderList of activeRiderRideList">
+              <tr>
+                <td>
+                  {{riderList?.startTime | date:'medium'}}
+                </td>
+                <td>
+                  <p style="margin-bottom:0;">{{riderList?.startAddress}}</p>
+                  <i class="fa fa-arrow-down"></i>
+                  <p>{{riderList?.endAddress}}</p>
+                </td>
+                <td>
+                  <p style="color:green">{{riderList?.status}}</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div align="center" *ngIf="activePassangerRideList.length === 0 && activeRiderRideList.length === 0">
+          <i class="fa fa-calendar" style="font-size:40px; color:dimgray"></i>
+          <p style="color:dimgray; font-size:20px;">No rides found</p>
+          <p style="color:dimgray; font-size:16px;">Whenever you create or join any ride, it will list here with
+            additional features</p>
+        </div>
+      </mat-tab>
+      <mat-tab label="COMPLETED">
+        <br>
+        <div class="">
+          <table class="table table-striped">
+            <tbody *ngFor="let riderList of riderRideList">
+              <tr *ngIf="riderList.status === 'Cancelled'">
+                <td>
+                  {{riderList?.startTime | date:'medium'}}
+                </td>
+                <td>
+                  <p style="height:20px; margin-bottom:-2px;">{{riderList?.startAddress}}</p>
+                  <i class="fa fa-arrow-down" style="font-size:16px;"></i>
+                  <p>{{riderList?.endAddress}}</p>
+                </td>
+                <td>
+                  <p style="color:red">{{riderList?.status}}</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-striped">
+            <tbody *ngFor="let passangerList of passangerRideList">
+              <tr *ngIf="passangerList.status === 'Cancelled'">
+                <td>
+                  {{passangerList?.startTime | date:'medium'}}
+                </td>
+                <td>
+                  <p style="height:20px; margin-bottom:-2px;">{{passangerList?.startAddress}}</p>
+                  <i class="fa fa-arrow-down" style="font-size:16px;"></i>
+                  <p>{{passangerList?.endAddress}}</p>
+                </td>
+                <td>
+                  <p style="color:red">{{passangerList?.status}}</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

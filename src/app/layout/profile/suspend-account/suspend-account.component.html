@@ -1,0 +1,20 @@
+<div class="container">
+  <p style="font-size:14px;color:#000">Do you want to suspend your account?</p>
+  <form role="form" [formGroup]="suspendForm">
+    <div class="form-content">
+      <div class="form-group" matTooltip="Enter Designation">
+        <input type="text" placeholder="Reason for suspend?" class="form-control input-underline input-lg"
+          id="reason" formControlName="reason" name="reason">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <a class="btn rounded-btn form-control" (click)="onNoClick()">No</a>
+      </div>
+      <div class="col-md-6">
+        <a class="btn rounded-btn form-control" (click)="onYesClick()">Yes</a>
+      </div>
+    </div>
+  </form>
+ 
+</div>

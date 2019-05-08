@@ -1,0 +1,150 @@
+<div class="login-page" [@routerTransition]>
+    <div class="container">
+
+        <div class="row justify-content-md-center">
+
+            <!-- <div align="center">
+                <img src="assets/images/hatchback.png" width="100px" (click)="enableCarForm()" />
+                <img src="assets/images/bike.jpg" width="80px" (click)="enableBikeForm()" />
+
+            </div> -->
+            <div class="col-md-6">
+                <mat-tab-group (focusChange)='onSelectTabChange($event)'>
+                    <mat-tab label="Add New Car">
+                        <form role="form" [formGroup]="carForm">
+
+                            <div class="form-content">
+                                <div class="form-group">
+                                    <br />
+                                    <label class="register-vehicle-label">Model</label>
+
+                                    <mat-form-field>
+                                        <mat-select id="model" formControlName="model">
+                                            <mat-option>None</mat-option>
+                                            <mat-option value="Hatch Back">Hatch Back</mat-option>
+                                            <mat-option value="Sedan">Sedan</mat-option>
+                                            <mat-option value="SUV">SUV</mat-option>
+                                            <mat-option value="Premium">Premium</mat-option>
+
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-group">
+                                    <label class="register-vehicle-label">Registration Number</label>
+
+                                    <input type="text" class="form-control  input-lg" id="registrationNo"
+                                        placeholder="Registration Number" formControlName="registrationNo">
+                                </div>
+                                <div class="form-group">
+                                    <label class="register-vehicle-label">Fare</label>
+
+                                    <input type="number" class="form-control  input-lg" id="fare"
+                                        placeholder="Fare(Points per km)" formControlName="fare">
+                                </div>
+                                <div class="form-group">
+                                    <label class="register-vehicle-label">Capacity</label>
+
+
+                                    <mat-form-field>
+                                        <mat-select id="model" formControlName="capacity">
+                                            <mat-option *ngFor="let seat of totalSeats" [value]="seat">{{seat}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-group">
+                                    <label class="register-vehicle-label">Make and Category</label>
+
+                                    <input type="text" class="form-control  input-lg" id="category"
+                                        placeholder="Make and Colour (Ex: Red Swift)" formControlName="category">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="register-vehicle-label">Features</label>
+
+                                    <input type="text" class="form-control  input-lg" id="features"
+                                        placeholder="Features (Ex: AC,Music,WiFi)" formControlName="features">
+                                </div>
+                                <div align="center">
+                                    <button class="btn rounded-btn" (click)="registerCar()">Add Car</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </mat-tab>
+                    <mat-tab label="Add New Bike">
+                        <form role="form" [formGroup]="bikeForm">
+
+                            <div class="form-content">
+                                <div class="form-group">
+                                    <br />
+                                    <label class="register-vehicle-label">Model</label>
+                                    <mat-form-field>
+                                        <mat-select id="model" formControlName="model">
+
+                                            <mat-option value="Sports Bike">Sports Bike</mat-option>
+                                            <mat-option value="Scooter">Scooter</mat-option>
+                                            <mat-option value="Regular Bike">Regular Bike</mat-option>
+                                            <mat-option value="Cruise Bike">Cruise Bike</mat-option>
+
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-group">
+                                    <label class="register-vehicle-label">Registration Number</label>
+
+                                    <input type="text" class="form-control  input-lg" id="registrationNo"
+                                        placeholder="Registration Number" formControlName="registrationNo">
+                                </div>
+                                <div class="form-group">
+                                    <label class="register-vehicle-label">Fare</label>
+
+                                    <input type="number" class="form-control  input-lg" id="fare"
+                                        placeholder="Fare(Points per km)" formControlName="fare">
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="register-vehicle-label">Capacity</label>
+                                    <mat-form-field>
+                                        <mat-select id="model" formControlName="capacity">
+                                            <mat-option [value]="1">1 </mat-option>
+                                            <mat-option [value]="2">2 </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="register-vehicle-label">Make and Category</label>
+                                    <input type="text" class="form-control  input-lg" id="category"
+                                        placeholder="Make and Colour (Ex : Black CBR)" formControlName="category">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="register-vehicle-label">Features</label>
+                                    <input type="text" class="form-control  input-lg" id="features"
+                                        placeholder="Features (Ex : Helmet)" formControlName="features">
+                                </div>
+                                <div align="center">
+                                    <button class="btn rounded-btn" (click)="registerBike()">Add Bike</button>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </mat-tab>
+                    <mat-tab label="Show Vehicle List">
+                        <app-show-vehicles ></app-show-vehicles>
+                    </mat-tab>
+                </mat-tab-group>
+
+
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

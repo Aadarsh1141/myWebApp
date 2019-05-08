@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="card" style="width:100%">
+      <div class="text-center" id="profile-image">
+        <img class="card-img-top" src="assets/images/default_male.png" alt="Card image cap" style="width:100px">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title text-center">{{profile?.name}}</h5>
+        <div class="text-center">
+          <ul id="ride-stats">
+            <li>Phone Number</li>
+            <li>Gender</li>
+            <li>Status</li>
+          </ul>
+          <ul id="ride-stats">
+            <li>{{profile?.contactNoOfUserWithCountryCode}}</li>
+            <li>{{gender}} </li>
+            <li>{{profile?.status}} </li>
+          </ul>
+          <br>
+        </div>
+        <br>
+        <div class="text-center">
+          <ul id="ride-stats">
+            <li>Total Rides</li>
+            <li>As Rider</li>
+            <li>As Passenger</li>
+          </ul>
+          <ul id="ride-stats">
+            <li>{{totalRides}}</li>
+            <li>{{riderRides}} </li>
+            <li>{{passengerRides}} </li>
+          </ul>
+          <br>
+          <p *ngIf="showVerify" style="font-size: 12px;margin-top: 30px;">You are not verified yet ? <a [routerLink]="['/verify']"
+              style="color: blue">Verify Now</a></p>
+          <p *ngIf="!showVerify" style="font-size: 12px;margin-top: 30px; color:green">Verified <img src="./assets/images/verified_new.png" style="height:20px; width:20px" alt="verified">
+          </p>
+        </div>
+
+      </div>
+      <ul class="list-group list-group-flush" id="location-setting">
+        <li class="list-group-item"><a (click)="setHomeLocation()"><i class="fa fa-home"></i> Set Home Location</a></li>
+        <li class="list-group-item"><a (click)="setOfficeLocation()"><i class="fa fa-briefcase"></i> Set Office Location</a></li>
+
+      </ul>
+      <ul class="list-group list-group-flush" id="general-setting">
+        <li class="list-group-item"><a [routerLink]="['/register-vehicle']">Add Vehicle</a> </li>
+        <li class="list-group-item"><a (click)="ecoMeter()">Eco Meter</a> </li>
+        <li class="list-group-item"><a [routerLink]="['/verify']">My Account</a> </li>
+        <li class="list-group-item"><a (click)="changePassword()">Change Password</a> </li>
+        <li class="list-group-item"><a (click)="suspendAccount()">Suspend Account</a> </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>

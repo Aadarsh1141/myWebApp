@@ -1,0 +1,44 @@
+<mat-dialog-content>
+<div class="card-body" >
+    <ul class="chat">
+        <li class="left clearfix" *ngFor="let message of conversations" style="list-style:none;">
+            <span class="chat-img pull-left">
+                <img src="assets/images/default_male.png" alt="User Avatar" class="img-circle" style="width:25px">
+            </span>
+            <div class="chat-body clearfix">
+                <div class="header">
+                    <strong class="primary-font">{{message.source}}</strong>
+                    <small class="pull-right text-muted">
+                        <!-- <i class="fa fa-clock-o fa-fw">{{message.time | date }}</i> -->
+                    </small>
+                </div>
+                <p class="bubble">
+                    {{message.message}}
+
+                </p>
+            </div>
+        </li>
+        <!-- <li class="right clearfix" *ngFor="let message of conversations" style="list-style:none">
+
+            <div class="chat-body clearfix">
+
+                <p class="bubble">
+                    {{message.message}}
+                </p>
+            </div>
+        </li> -->
+
+    </ul>
+</div>
+<!-- /.card-body -->
+<div class="card-footer">
+    <div class="input-group">
+        <input id="btn-input" type="text" class="form-control input-sm" [(ngModel)]="message"  (ngModelChange)="message = $event" placeholder="Type your message here...">
+        <span class="input-group-btn">
+            <button class="btn btn-warning btn-sm" id="btn-chat" (click)="sendMessage()">
+                Send
+            </button>
+        </span>
+    </div>
+</div>
+</mat-dialog-content>
